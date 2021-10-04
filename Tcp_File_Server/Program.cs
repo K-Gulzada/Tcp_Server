@@ -19,6 +19,8 @@ namespace Tcp_File_Server
                 while (true)
                 {
                     TcpClient client = server.AcceptTcpClient();
+                    client.ReceiveBufferSize = Int32.MaxValue;
+                    client.ReceiveTimeout = 300000;
                     byte[] bytes = new byte[1024];
 
                     var stream = client.GetStream();
